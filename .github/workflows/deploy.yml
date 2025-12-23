@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+defaults:
+  run:
+    working-directory: ./blog
+
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -28,12 +32,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd blog
           npm ci --no-fund --no-audit
 
       - name: Build static site
         run: |
-          cd blog
           npm run build
 
       - name: Setup Pages
@@ -42,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: blog/public
+          path: public
 
       - name: Deploy to GitHub Pages
         id: deployment
