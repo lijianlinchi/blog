@@ -36,7 +36,7 @@ jobs:
 
       - name: Fix asset base paths for GitHub Pages
         run: |
-          find public -name "*.html" -type f -print0 | xargs -0 sed -i 's|"/static/|"/blog/static/|g; s|href="/favicon.ico|href="/blog/favicon.ico|g'
+          find public -name "*.html" -type f -print0 | xargs -0 sed -i 's|"/static/|"/blog/static/|g; s|href="/favicon.ico|href="/blog/favicon.ico|g; s|src="/favicon.ico|src="/blog/favicon.ico|g'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
